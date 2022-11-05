@@ -1,5 +1,6 @@
 /** import the functions you need from the SDKs you need */
 import { initializeApp } from 'firebase/app';
+import { collection, getDocs, getFirestore } from 'firebase/firestore';
 import './style.css';
 
 /** the web app's firebase configuration */
@@ -14,3 +15,22 @@ const firebaseConfig = {
 
 /** initialize firebase */
 const app = initializeApp(firebaseConfig);
+
+/** initialize services */
+const db = getFirestore();
+
+/** collection reference */
+const collRef = collection(db, 'books');
+
+/** get collection data */
+getDocs(collRef)
+	.then((snapshot) => {
+		let books = [];
+		snapshot.docs.forEach((doc) => {
+			books.push({ ...doc.data(), id: doc.id });
+		});
+		console.log(books);
+	})
+	.catch((err) => {
+		console.log(err.message);
+	});
