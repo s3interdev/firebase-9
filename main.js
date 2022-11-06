@@ -64,7 +64,7 @@ getDocs(collRef)
 */
 
 /** realtime collection data */
-onSnapshot(qry, (snapshot) => {
+const unsubscibeCollection = onSnapshot(qry, (snapshot) => {
 	let books = [];
 
 	snapshot.docs.forEach((doc) => {
@@ -105,7 +105,7 @@ deleteBookForm.addEventListener('submit', (e) => {
 /** get a single document */
 const docRef = doc(db, 'books', 'n9DMYkV6LTWOlfbBbNSI');
 
-onSnapshot(docRef, (doc) => {
+const unsubscribeDocument = onSnapshot(docRef, (doc) => {
 	console.log(doc.data(), doc.id);
 });
 
@@ -174,6 +174,16 @@ signinForm.addEventListener('submit', (e) => {
 });
 
 /** subscribing to auth changes */
-onAuthStateChanged(auth, (user) => {
+const unsubscribeAuth = onAuthStateChanged(auth, (user) => {
 	console.log('User status changed: ', user);
+});
+
+/** unsubscribe from changes */
+const unsubscribeButton = document.querySelector('.unsubscribe');
+
+unsubscribeButton.addEventListener('click', () => {
+	console.log('Unsubscribing...');
+	unsubscibeCollection();
+	unsubscribeDocument();
+	unsubscribeAuth();
 });
