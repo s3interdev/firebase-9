@@ -75,7 +75,7 @@
 				</div>
 				<!-- header section end -->
 
-				<!-- auth form start -->
+				<!-- signup form start -->
 				<form class="signup py-8">
 					<div class="flex flex-col gap-4 md:flex-row">
 						<div class="mb-4 flex-1">
@@ -91,7 +91,31 @@
 						<button class="btn">Sign Up</button>
 					</div>
 				</form>
-				<!-- auth form end -->
+				<!-- signup form end -->
+
+				<!-- signin form start -->
+				<form class="signin py-8">
+					<div class="flex flex-col gap-4 md:flex-row">
+						<div class="mb-4 flex-1">
+							<label for="email">Email</label>
+							<input type="text" name="email" required class="field" />
+						</div>
+						<div class="mb-4 flex-1">
+							<label for="password">Password</label>
+							<input type="password" name="password" required class="field" />
+						</div>
+					</div>
+					<div class="mb-4 flex-1">
+						<button class="btn">Sign In</button>
+					</div>
+				</form>
+				<!-- signin form end -->
+
+				<!-- signout button start -->
+				<div class="signout mb-4 flex-1">
+					<button class="btn">Sign Out</button>
+				</div>
+				<!-- signout button end -->
 			</div>
 		</div>
 		<script type="module" src="/main.js"></script>
