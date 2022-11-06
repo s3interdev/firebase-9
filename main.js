@@ -18,6 +18,7 @@ import {
 import {
 	createUserWithEmailAndPassword,
 	getAuth,
+	onAuthStateChanged,
 	signInWithEmailAndPassword,
 	signOut,
 } from 'firebase/auth';
@@ -132,7 +133,7 @@ signupForm.addEventListener('submit', (e) => {
 
 	createUserWithEmailAndPassword(auth, email, password)
 		.then((userCredentials) => {
-			console.log('User created: ', userCredentials.user);
+			//console.log('User created: ', userCredentials.user);
 			signupForm.reset();
 		})
 		.catch((err) => {
@@ -146,7 +147,7 @@ const signoutButton = document.querySelector('.signout');
 signoutButton.addEventListener('click', () => {
 	signOut(auth)
 		.then(() => {
-			console.log('User signed out.');
+			//console.log('User signed out.');
 		})
 		.catch((err) => {
 			console.log(err.message);
@@ -164,10 +165,15 @@ signinForm.addEventListener('submit', (e) => {
 
 	signInWithEmailAndPassword(auth, email, password)
 		.then((userCredentials) => {
-			console.log('User signed in: ', userCredentials.user);
+			//console.log('User signed in: ', userCredentials.user);
 			signinForm.reset();
 		})
 		.catch((err) => {
 			console.log(err.message);
 		});
+});
+
+/** subscribing to auth changes */
+onAuthStateChanged(auth, (user) => {
+	console.log('User status changed: ', user);
 });
