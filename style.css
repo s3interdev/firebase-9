@@ -10,6 +10,16 @@
 	}
 
 	body {
-		@apply font-ubuntu text-neutral-800 antialiased;
+		@apply font-ubuntu text-neutral-500 antialiased;
+	}
+}
+
+@layer components {
+	.field {
+		@apply mt-1 w-full rounded-md border-2 border-neutral-100 bg-neutral-100 py-3 focus:border-neutral-100 focus:outline-none focus:ring-1 focus:ring-neutral-300 focus:ring-offset-2;
+	}
+
+	.btn {
+		@apply mt-2 mb-2 inline-flex w-full items-center justify-center rounded-lg bg-sky-800 py-3 px-5 font-medium uppercase text-white hover:bg-sky-700;
 	}
 }

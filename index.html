@@ -3,14 +3,135 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<meta name="description" content="Starter template for small or static websites." />
+		<meta name="description" content="Getting started with Firebase 9." />
 		<link rel="icon" type="image/png" href="/assets/favicon.png" />
-		<title>HTML+TailwindCSS+Vite Starter</title>
+		<title>Firebase 9</title>
 	</head>
 	<body>
-		<h1 class="p-8 text-center text-4xl font-bold text-indigo-700">
-			Your settings are well configured.
-		</h1>
+		<div class="m-8 mx-auto max-w-5xl px-4 py-4">
+			<div class="mx-auto max-w-3xl rounded-lg bg-slate-50 px-3 py-4 shadow-lg md:px-6">
+				<!-- header section start -->
+				<div class="space-y-4">
+					<h1 class="text-center text-2xl font-bold md:text-left md:text-4xl">
+						Getting Started with Firebase 9
+					</h1>
+					<h2 class="text-center text-xl font-semibold md:text-left md:text-2xl">
+						Firebase Firestore
+					</h2>
+				</div>
+				<!-- header section end -->
+
+				<!-- add form start -->
+				<form class="add py-8">
+					<div class="flex flex-col gap-4 md:flex-row">
+						<div class="mb-4 flex-1">
+							<label for="title">Title</label>
+							<input type="text" name="title" required class="field" />
+						</div>
+						<div class="mb-4 flex-1">
+							<label for="author">Author</label>
+							<input type="text" name="author" required class="field" />
+						</div>
+					</div>
+					<div class="mb-4 flex-1">
+						<button class="btn">Add Book</button>
+					</div>
+				</form>
+				<!-- add form end -->
+
+				<!-- delete form start -->
+				<form class="delete py-8">
+					<div class="flex flex-col gap-4 md:flex-row">
+						<div class="mb-4 flex-1">
+							<label for="id">Document Id</label>
+							<input type="text" name="id" required class="field" />
+						</div>
+					</div>
+					<div class="mb-4 flex-1">
+						<button class="btn">Delete Book</button>
+					</div>
+				</form>
+				<!-- delete form end -->
+
+				<!-- update form start -->
+				<form class="update py-8">
+					<div class="flex flex-col gap-4 md:flex-row">
+						<div class="mb-4 flex-1">
+							<label for="id">Document Id</label>
+							<input type="text" name="id" required class="field" />
+						</div>
+					</div>
+					<div class="mb-4 flex-1">
+						<button class="btn">Update Book</button>
+					</div>
+				</form>
+				<!-- update form end -->
+
+				<!-- auth header section start -->
+				<div class="space-y-4">
+					<h2 class="text-center text-xl font-semibold md:text-left md:text-2xl">
+						Firebase Authentication
+					</h2>
+				</div>
+				<!-- auth header section end -->
+
+				<!-- signup form start -->
+				<form class="signup py-8">
+					<div class="flex flex-col gap-4 md:flex-row">
+						<div class="mb-4 flex-1">
+							<label for="email">Email</label>
+							<input type="text" name="email" required class="field" />
+						</div>
+						<div class="mb-4 flex-1">
+							<label for="password">Password</label>
+							<input type="password" name="password" required class="field" />
+						</div>
+					</div>
+					<div class="mb-4 flex-1">
+						<button class="btn">Sign Up</button>
+					</div>
+				</form>
+				<!-- signup form end -->
+
+				<!-- signin form start -->
+				<form class="signin py-8">
+					<div class="flex flex-col gap-4 md:flex-row">
+						<div class="mb-4 flex-1">
+							<label for="email">Email</label>
+							<input type="text" name="email" required class="field" />
+						</div>
+						<div class="mb-4 flex-1">
+							<label for="password">Password</label>
+							<input type="password" name="password" required class="field" />
+						</div>
+					</div>
+					<div class="mb-4 flex-1">
+						<button class="btn">Sign In</button>
+					</div>
+				</form>
+				<!-- signin form end -->
+
+				<!-- signout button start -->
+				<div class="signout mb-4 flex-1">
+					<button class="btn">Sign Out</button>
+				</div>
+				<!-- signout button end -->
+
+				<!-- unsubscribe header section start -->
+				<div class="space-y-4">
+					<h2 class="text-center text-xl font-semibold md:text-left md:text-2xl">
+						Unsubscribe from Auth & Database Changes
+					</h2>
+				</div>
+				<!-- unsubscribe header section end -->
+
+				<!-- unsubscribe button start -->
+				<div class="unsubscribe mb-4 flex-1">
+					<button class="btn">Unsubscribe</button>
+				</div>
+				<!-- unsubscribe button end -->
+			</div>
+		</div>
 		<script type="module" src="/main.js"></script>
 	</body>
 </html>
