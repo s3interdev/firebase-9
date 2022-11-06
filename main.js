@@ -8,6 +8,8 @@ import {
 	getDocs,
 	getFirestore,
 	onSnapshot,
+	query,
+	where,
 } from 'firebase/firestore';
 import './style.css';
 
@@ -30,13 +32,18 @@ const db = getFirestore(app);
 /** collection reference */
 const collRef = collection(db, 'books');
 
+/** queries */
+const qry = query(collRef, where('author', '==', 'Harper Lee'));
+
 /** get collection data
 getDocs(collRef)
 	.then((snapshot) => {
 		let books = [];
+
 		snapshot.docs.forEach((doc) => {
 			books.push({ ...doc.data(), id: doc.id });
 		});
+		
 		console.log(books);
 	})
 	.catch((err) => {
@@ -45,11 +52,13 @@ getDocs(collRef)
 */
 
 /** realtime collection data */
-onSnapshot(collRef, (snapshot) => {
+onSnapshot(qry, (snapshot) => {
 	let books = [];
+
 	snapshot.docs.forEach((doc) => {
 		books.push({ ...doc.data(), id: doc.id });
 	});
+
 	console.log(books);
 });
 
