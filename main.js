@@ -15,7 +15,7 @@ import {
 	updateDoc,
 	where,
 } from 'firebase/firestore';
-import { getAuth } from 'firebase/auth';
+import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
 import './style.css';
 
 /** the web app's firebase configuration */
@@ -114,4 +114,23 @@ updateBookForm.addEventListener('submit', (e) => {
 	updateDoc(docRef, { title: 'Updated Title' }).then(() => {
 		updateBookForm.reset();
 	});
+});
+
+/** signing users up */
+const signupForm = document.querySelector('.signup');
+
+signupForm.addEventListener('submit', (e) => {
+	e.preventDefault();
+
+	const email = signupForm.email.value;
+	const password = signupForm.password.value;
+
+	createUserWithEmailAndPassword(auth, email, password)
+		.then((userCredentials) => {
+			console.log('User created: ', userCredentials.user);
+			signupForm.reset();
+		})
+		.catch((err) => {
+			console.log(err.message);
+		});
 });
