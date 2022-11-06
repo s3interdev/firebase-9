@@ -1,6 +1,13 @@
 /** import the functions you need from the SDKs you need */
 import { initializeApp } from 'firebase/app';
-import { collection, getDocs, getFirestore } from 'firebase/firestore';
+import {
+	addDoc,
+	collection,
+	deleteDoc,
+	doc,
+	getDocs,
+	getFirestore,
+} from 'firebase/firestore';
 import './style.css';
 
 /** the web app's firebase configuration */
@@ -17,7 +24,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 /** initialize services */
-const db = getFirestore();
+const db = getFirestore(app);
 
 /** collection reference */
 const collRef = collection(db, 'books');
@@ -34,3 +41,30 @@ getDocs(collRef)
 	.catch((err) => {
 		console.log(err.message);
 	});
+
+/** adding documents */
+const addBookForm = document.querySelector('.add');
+
+addBookForm.addEventListener('submit', (e) => {
+	e.preventDefault();
+
+	addDoc(collRef, {
+		title: addBookForm.title.value,
+		author: addBookForm.author.value,
+	}).then(() => {
+		addBookForm.reset();
+	});
+});
+
+/** deleting documents */
+const deleteBookForm = document.querySelector('.delete');
+
+deleteBookForm.addEventListener('submit', (e) => {
+	e.preventDefault();
+
+	const docRef = doc(db, 'books', deleteBookForm.id.value);
+
+	deleteDoc(docRef).then(() => {
+		deleteBookForm.reset();
+	});
+});

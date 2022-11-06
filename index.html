@@ -8,9 +8,52 @@
 		<title>Firebase 9</title>
 	</head>
 	<body>
-		<h1 class="p-8 text-center text-4xl font-bold text-indigo-700">
-			Getting Started with Firebase 9
-		</h1>
+		<div class="m-8 mx-auto max-w-5xl px-8 py-8">
+			<div class="mx-auto max-w-3xl rounded-lg bg-slate-50 px-6 py-8 shadow-lg md:px-8">
+				<!-- header section start -->
+				<div class="space-y-4">
+					<h1 class="text-center text-2xl font-bold md:text-left md:text-4xl">
+						Getting Started with Firebase 9
+					</h1>
+					<h2 class="text-center text-xl font-semibold md:text-left md:text-2xl">
+						Firebase Firestore
+					</h2>
+				</div>
+				<!-- header section end -->
+
+				<!-- add form start -->
+				<form class="add py-8">
+					<div class="flex flex-col gap-4 md:flex-row">
+						<div class="mb-4 flex-1">
+							<label for="title">Title</label>
+							<input type="text" name="title" required class="field" />
+						</div>
+						<div class="mb-4 flex-1">
+							<label for="author">Author</label>
+							<input type="text" name="author" required class="field" />
+						</div>
+					</div>
+					<div class="mb-4 flex-1">
+						<button class="btn">Add Book</button>
+					</div>
+				</form>
+				<!-- add form end -->
+
+				<!-- delete form start -->
+				<form class="delete py-8">
+					<div class="flex flex-col gap-4 md:flex-row">
+						<div class="mb-4 flex-1">
+							<label for="id">Document Id</label>
+							<input type="text" name="id" required class="field" />
+						</div>
+					</div>
+					<div class="mb-4 flex-1">
+						<button class="btn">Delete Book</button>
+					</div>
+				</form>
+				<!-- delete form end -->
+			</div>
+		</div>
 		<script type="module" src="/main.js"></script>
 	</body>
 </html>
