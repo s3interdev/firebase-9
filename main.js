@@ -8,7 +8,9 @@ import {
 	getDocs,
 	getFirestore,
 	onSnapshot,
+	orderBy,
 	query,
+	serverTimestamp,
 	where,
 } from 'firebase/firestore';
 import './style.css';
@@ -33,7 +35,7 @@ const db = getFirestore(app);
 const collRef = collection(db, 'books');
 
 /** queries */
-const qry = query(collRef, where('author', '==', 'Harper Lee'));
+const qry = query(collRef, orderBy('createdAt'));
 
 /** get collection data
 getDocs(collRef)
@@ -43,7 +45,7 @@ getDocs(collRef)
 		snapshot.docs.forEach((doc) => {
 			books.push({ ...doc.data(), id: doc.id });
 		});
-		
+
 		console.log(books);
 	})
 	.catch((err) => {
@@ -71,6 +73,7 @@ addBookForm.addEventListener('submit', (e) => {
 	addDoc(collRef, {
 		title: addBookForm.title.value,
 		author: addBookForm.author.value,
+		createdAt: serverTimestamp(),
 	}).then(() => {
 		addBookForm.reset();
 	});
