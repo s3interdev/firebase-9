@@ -5,6 +5,7 @@ import {
 	collection,
 	deleteDoc,
 	doc,
+	getDoc,
 	getDocs,
 	getFirestore,
 	onSnapshot,
@@ -90,4 +91,11 @@ deleteBookForm.addEventListener('submit', (e) => {
 	deleteDoc(docRef).then(() => {
 		deleteBookForm.reset();
 	});
+});
+
+/** get a single document */
+const docRef = doc(db, 'books', 'n9DMYkV6LTWOlfbBbNSI');
+
+onSnapshot(docRef, (doc) => {
+	console.log(doc.data(), doc.id);
 });
