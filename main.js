@@ -7,6 +7,7 @@ import {
 	doc,
 	getDocs,
 	getFirestore,
+	onSnapshot,
 } from 'firebase/firestore';
 import './style.css';
 
@@ -29,7 +30,7 @@ const db = getFirestore(app);
 /** collection reference */
 const collRef = collection(db, 'books');
 
-/** get collection data */
+/** get collection data
 getDocs(collRef)
 	.then((snapshot) => {
 		let books = [];
@@ -41,6 +42,16 @@ getDocs(collRef)
 	.catch((err) => {
 		console.log(err.message);
 	});
+*/
+
+/** realtime collection data */
+onSnapshot(collRef, (snapshot) => {
+	let books = [];
+	snapshot.docs.forEach((doc) => {
+		books.push({ ...doc.data(), id: doc.id });
+	});
+	console.log(books);
+});
 
 /** adding documents */
 const addBookForm = document.querySelector('.add');
