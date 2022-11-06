@@ -15,6 +15,7 @@ import {
 	updateDoc,
 	where,
 } from 'firebase/firestore';
+import { getAuth } from 'firebase/auth';
 import './style.css';
 
 /** the web app's firebase configuration */
@@ -32,6 +33,7 @@ const app = initializeApp(firebaseConfig);
 
 /** initialize services */
 const db = getFirestore(app);
+const auth = getAuth(app);
 
 /** collection reference */
 const collRef = collection(db, 'books');
